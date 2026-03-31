@@ -22,13 +22,13 @@ DFRobotDFPlayerMini myDFPlayer;
 // ---------- WIFI & GOOGLE SHEETS ----------
 const char* ssid = "ESP32TEST";
 const char* password = "12345678";
-String scriptURL = "https://script.google.com/macros/s/AKfycbzWCcNN7kTd_g-y0jFRtkqgxxed5XF2pavyk01S2rVefyVj5DcTbhyb7D1yg1D08u3q/exec";
+String scriptURL = "ID";
 
 // ---------- ADAFRUIT IO MQTT ----------
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   
 #define AIO_USERNAME    "mortalzenith"       
-#define AIO_KEY         "aio_lhot38l5ivwVZY5ThxkjkehWTert"  
+#define AIO_KEY         "key"  
 
 WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
@@ -240,7 +240,7 @@ void loop() {
 // ----------------------------------------
 void displayReceiptQR(String orderID, String items, String totalAmt) {
     items.replace(" ", "_"); 
-    String baseURL = "https://canteen-pay.onrender.com/receipt.html?";
+    String baseURL = "URL";
     String finalUrl = baseURL + "order=" + orderID + "&items=" + items + "&total=" + totalAmt + "&token=" + String(currentToken);
 
     QRCode qrcode;
@@ -507,7 +507,7 @@ void updateScreen() {
 void showQR() {
   tft.fillScreen(ILI9341_WHITE);
   String amtStr = String(totalAmount) + ".00";
-  String upi = "upi://pay?cu=INR&mc=7372&mode=19&pa=josephmathewjoy816930.rzp@rxairtel&tn=PaymentToJOSEPHMATHEWJOY&tr=SLZ8ZlmkHmLyhMqrv2&am=" + amtStr;
+  String upi = "upilink" + amtStr;
   QRCode qrcode;
   const uint8_t qrVersion = 8; 
   uint8_t qrcodeData[qrcode_getBufferSize(qrVersion)];
